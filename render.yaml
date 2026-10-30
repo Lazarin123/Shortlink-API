@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: shortlink-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: API_KEY
+        generateValue: true
+      - key: IP_SALT
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: BASE_URL
+        sync: false
